@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090511">
+  <title>Một lời nhắn dành cho bé yêu của tôi 💌</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main id="gardenScene" class="garden-scene">
+    <div class="moon-glow" aria-hidden="true"></div>
+    <div id="stars" aria-hidden="true"></div>
+    <div id="floatingLayer" aria-hidden="true"></div>
+
+    <h1 class="intro-title">Một khu vườn nhỏ dành cho Nàng</h1>
+
+    <div id="garden" aria-hidden="true"></div>
+    <div class="grass" aria-hidden="true"></div>
+
+    <div class="butterfly butterfly-one" aria-hidden="true"></div>
+    <div class="butterfly butterfly-two" aria-hidden="true"></div>
+    <div class="butterfly butterfly-three" aria-hidden="true"></div>
+
+    <section class="airplane-area" aria-label="Lời nhắn">
+      <button
+        class="airplane-button"
+        id="openLetter"
+        type="button"
+        aria-label="Mở lời nhắn"
+      >
+        <svg class="paper-plane" viewBox="0 0 100 75"
+             xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="planeColor" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fffaff"/>
+              <stop offset="100%" stop-color="#ff9ed8"/>
+            </linearGradient>
+          </defs>
+
+          <path
+            d="M4 34 L94 3 L69 70 L48 47 L34 59 L36 40 Z"
+            fill="url(#planeColor)"
+            stroke="#fff1fb"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="M36 40 L94 3 L48 47"
+            fill="none"
+            stroke="#d957a4"
+            stroke-width="1.5"
+          />
+
+          <path
+            d="M36 40 L69 70 L56 43"
+            fill="#f7b6df"
+            stroke="#fff1fb"
+            stroke-width="1.2"
+          />
+        </svg>
+      </button>
+
+      <div class="message-hint" id="messageHint">
+        <span class="hint-sparkle">✧ ✦ ✧</span>
+        <p>Nàng có một lời nhắn được gửi bởi</p>
+        <strong>DraZy</strong>
+        <span class="hint-small">Chạm vào máy bay để mở thư 💌</span>
+      </div>
+    </section>
+  </main>
+
+  <section id="cardScene" class="card-scene hidden">
+    <div class="card-glow" aria-hidden="true"></div>
+
+    <article class="letter-card">
+      <div class="card-flower" aria-hidden="true">♡</div>
+      <h2>Lời Tâm Sự Nhỏ 💌</h2>
+      <p id="letterText"></p>
+      <p id="signature"></p>
+      <button id="backButton" type="button">
+        Quay lại khu vườn ♡
+      </button>
+    </article>
+  </section>
+</body>
+</html>

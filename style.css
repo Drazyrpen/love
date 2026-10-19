@@ -1,0 +1,575 @@
+
+/* ===== CÀI ĐẶT CHUNG ===== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #090511;
+  color: #fff0fb;
+}
+
+button {
+  font: inherit;
+}
+
+/* ===== CẢNH KHU VƯỜN ===== */
+.garden-scene {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 520px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 78%, #39113e 0%, transparent 53%),
+    linear-gradient(180deg, #080510 0%, #160b27 54%, #28102e 100%);
+}
+
+.moon-glow {
+  position: absolute;
+  top: 7%;
+  right: 12%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255, 225, 251, 0.08);
+  box-shadow: 0 0 65px 24px rgba(232, 115, 222, 0.12);
+  pointer-events: none;
+}
+
+/* ===== TIÊU ĐỀ ===== */
+.intro-title {
+  position: absolute;
+  z-index: 5;
+  top: 6%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 16px;
+  text-align: center;
+  font-size: clamp(21px, 4vw, 32px);
+  font-weight: 500;
+  color: #ffe5f7;
+  text-shadow: 0 0 18px rgba(255, 133, 219, 0.8);
+  animation: titleAppear 2s ease both;
+}
+
+@keyframes titleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== BẦU TRỜI SAO ===== */
+#stars {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  color: #fff0ff;
+  text-shadow: 0 0 8px #ffb6ed, 0 0 18px #e87ad4;
+  animation: twinkle var(--twinkle-duration, 2s) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.25;
+    scale: 0.75;
+  }
+  to {
+    opacity: 1;
+    scale: 1.15;
+  }
+}
+
+/* ===== VƯỜN HOA ===== */
+#garden {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 49%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+  bottom: 0;
+  width: var(--flower-size, 80px);
+  height: var(--flower-height, 180px);
+  transform-origin: bottom center;
+  animation: flowerGrow var(--grow-time, 2s) cubic-bezier(.2, .8, .3, 1) both;
+  animation-delay: var(--grow-delay, 0s);
+}
+
+.flower svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes flowerGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.grass {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(25, 10, 35, 0.65) 45%,
+    #100817 100%
+  );
+  pointer-events: none;
+}
+
+/* ===== BƯƠM BƯỚM VẼ BẰNG SVG ===== */
+.butterfly {
+  position: absolute;
+  z-index: 4;
+  width: 55px;
+  height: 42px;
+  filter: drop-shadow(0 0 7px rgba(255, 151, 232, 0.65));
+  pointer-events: none;
+}
+
+.butterfly svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.butterfly-one {
+  top: 43%;
+  left: 10%;
+  animation: butterflyFlyOne 8s ease-in-out infinite;
+}
+
+.butterfly-two {
+  top: 54%;
+  right: 12%;
+  animation: butterflyFlyTwo 10s ease-in-out infinite;
+}
+
+.butterfly-three {
+  top: 67%;
+  left: 27%;
+  width: 42px;
+  height: 33px;
+  animation: butterflyFlyThree 9s ease-in-out infinite;
+}
+
+.wing-left,
+.wing-right {
+  transform-box: fill-box;
+  transform-origin: center center;
+  animation: wingFlap 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes wingFlap {
+  from { scale: 1 1; }
+  to { scale: 0.65 0.88; }
+}
+
+@keyframes butterflyFlyOne {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 28px -24px; }
+}
+
+@keyframes butterflyFlyTwo {
+  0%, 100% { translate: 0 0; }
+  50% { translate: -25px -32px; }
+}
+
+@keyframes butterflyFlyThree {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 20px -18px; }
+}
+
+/* ===== TRÁI TIM VÀ NGÔI SAO BAY LÊN ===== */
+#floatingLayer {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-icon {
+  position: absolute;
+  bottom: -45px;
+  color: #ffb5e9;
+  text-shadow: 0 0 10px #ff77d5, 0 0 22px #e85dbf;
+  animation: floatingRise var(--float-duration, 7s) linear forwards;
+}
+
+@keyframes floatingRise {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.65);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(var(--drift, 30px), -115vh, 0)
+      rotate(45deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ===== MÁY BAY GIẤY ===== */
+.airplane-area {
+  position: absolute;
+  z-index: 8;
+  top: 34%;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  pointer-events: none;
+}
+
+.airplane-button {
+  --plane-half: 45px;
+
+  position: absolute;
+  top: 40%;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 75px;
+  padding: 8px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  animation: paperPlaneGlide 5.8s ease-in-out 1s forwards;
+}
+
+.paper-plane {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(255, 150, 220, 0.75));
+}
+
+.airplane-button:focus-visible {
+  outline: 2px solid #ffc6ee;
+  outline-offset: 3px;
+}
+
+/* Bay vào, lượn nhẹ rồi dừng chính giữa */
+@keyframes paperPlaneGlide {
+  0% {
+    left: -100px;
+    top: 100%;
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.85);
+  }
+  5% {
+    opacity: 1;
+  }
+  18% {
+    left: 5%;
+    top: 65%;
+    transform: rotate(-5deg) scale(1);
+  }
+  32% {
+    left: 18%;
+    top: 25%;
+    transform: rotate(-15deg) scale(1.03);
+  }
+  46% {
+    left: 30%;
+    top: 42%;
+    transform: rotate(12deg) scale(1);
+  }
+  60% {
+    left: 40%;
+    top: 15%;
+    transform: rotate(-10deg) scale(1.04);
+  }
+  75% {
+    left: 46%;
+    top: 30%;
+    transform: rotate(7deg) scale(1.02);
+  }
+  90% {
+    left: calc(50% - var(--plane-half));
+    top: 20%;
+    transform: rotate(-3deg) scale(1);
+  }
+  100% {
+    left: calc(50% - var(--plane-half));
+    top: 20%;
+    opacity: 1;
+    transform: rotate(-1deg) scale(1);
+  }
+}
+
+/* Khi animation bay kết thúc, giữ nguyên vị trí */
+.airplane-button.settled {
+  left: calc(50% - var(--plane-half));
+  top: 20%;
+  opacity: 1;
+  animation: planeHover 2.8s ease-in-out infinite;
+}
+
+@keyframes planeHover {
+  0%, 100% {
+    margin-top: 0;
+    transform: rotate(-1deg);
+    opacity: 1;
+  }
+  50% {
+    margin-top: -7px;
+    transform: rotate(2deg);
+    opacity: 1;
+  }
+}
+
+/* ===== THÔNG BÁO DƯỚI MÁY BAY ===== */
+.message-hint {
+  position: absolute;
+  z-index: 9;
+  top: calc(20% + 88px);
+  left: 50%;
+  width: min(360px, calc(100vw - 32px));
+  margin: 0;
+  padding: 8px 12px;
+  transform: translateX(-50%);
+  text-align: center;
+  overflow-wrap: break-word;
+  color: #ffe8f8;
+  text-shadow: 0 0 12px rgba(255, 130, 218, 0.45);
+  pointer-events: auto;
+  animation: hintAppear 1.5s ease 5.8s both;
+}
+
+.message-hint p {
+  margin: 7px 0;
+  font-size: clamp(14px, 3vw, 17px);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.message-hint strong {
+  display: block;
+  margin-top: 4px;
+  color: #ffb9e9;
+  font-size: clamp(17px, 3.5vw, 22px);
+  text-align: center;
+}
+
+.hint-sparkle,
+.hint-small {
+  display: block;
+  text-align: center;
+}
+
+.hint-sparkle {
+  color: #ffc6f0;
+  letter-spacing: 8px;
+}
+
+.hint-small {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #e9c9e5;
+}
+
+@keyframes hintAppear {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ===== THIỆP LỜI CHÚC ===== */
+.card-scene {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 50% 40%, #4b2053, transparent 70%),
+    #10091b;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 138, 222, 0.12),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.letter-card {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  padding: clamp(24px, 6vw, 42px);
+  border: 1px solid rgba(255, 193, 238, 0.45);
+  border-radius: 24px;
+  background: rgba(36, 17, 48, 0.94);
+  box-shadow:
+    0 0 40px rgba(239, 114, 213, 0.18),
+    inset 0 0 24px rgba(255, 194, 239, 0.04);
+  text-align: center;
+  animation: cardAppear 0.8s ease both;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-flower {
+  margin-bottom: 10px;
+  font-size: 40px;
+  filter: drop-shadow(0 0 12px rgba(255, 164, 231, 0.6));
+}
+
+.letter-card h2 {
+  margin: 0 0 20px;
+  color: #ffc5ed;
+  font-weight: 500;
+}
+
+#letterText {
+  min-height: 90px;
+  color: #fff0fb;
+  font-size: 16px;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+#signature {
+  margin-top: 22px;
+  color: #ffb7e7;
+  font-size: 18px;
+}
+
+#backButton {
+  margin-top: 24px;
+  padding: 11px 22px;
+  border: 1px solid #ffc3ed;
+  border-radius: 24px;
+  background: rgba(255, 166, 226, 0.12);
+  color: #fff0fb;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#backButton:hover {
+  background: rgba(255, 166, 226, 0.24);
+  transform: translateY(-2px);
+}
+
+/* ===== MÀN HÌNH NHỎ ===== */
+@media (max-width: 600px) {
+  .intro-title {
+    top: 6%;
+    font-size: 22px;
+  }
+
+  .airplane-area {
+    top: 33%;
+  }
+
+  .airplane-button {
+    --plane-half: 41px;
+    width: 82px;
+    height: 70px;
+  }
+
+  .message-hint {
+    top: calc(20% + 80px);
+    width: calc(100vw - 28px);
+  }
+
+  #garden {
+    height: 43%;
+  }
+}
+
+/* Hạn chế chuyển động nếu thiết bị yêu cầu */
+@media (prefers-reduced-motion: reduce) {
+  .intro-title,
+  .flower,
+  .star,
+  .butterfly,
+  .wing-left,
+  .wing-right,
+  .message-hint,
+  .letter-card {
+    animation-duration: 0.01ms !important;
+  }
+}
