@@ -27,8 +27,7 @@ const message =
   "Chúc cho em luôn đạt được những thứ mình muốn\n"+
   "Chúc cho em luôn hạnh phúc, mong ràng những thứ làm cho em buồn sẽ tan biến hết!\n"+
   "Đừng bận lòng nữa nhé anh thương bé lắm nè\n"+
-  "Chúc cho gia đình em nhiều sức khỏe và luôn thành công trong cuộc sống!\n"+
-  "BÉ YÊU NGỦ NGOAN ĐI NHÉEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+  "Chúc cho gia đình em nhiều sức khỏe và luôn thành công trong cuộc sống!"
   ;
 
 const signatureText = "Gửi nàng, từ DraZy ♥";
